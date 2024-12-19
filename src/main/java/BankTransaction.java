@@ -46,4 +46,6 @@ public class BankTransaction {
     public int hashCode() {
         return Objects.hash(date, amount, description);
     }
+
+
 }

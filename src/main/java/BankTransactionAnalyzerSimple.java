@@ -11,19 +11,17 @@ public class BankTransactionAnalyzerSimple {
     private static final String RESOURCES = "src/main/resources/";
 
     public static void main(String... args) throws IOException {
-        final Path path = Paths.get(RESOURCES + args[0]);
-        final List<String> lines = Files.readAllLines(path);
-        double total = 0d;
-        final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        for (String line : lines) {
-            final String[] columns = line.split(",");
-            final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
-            if(date.getMonth() == Month.JANUARY) {
-                final double amount = Double.parseDouble(columns[1]);
-                total += amount;
-            }
-        }
+        final BankStatementCSVParser bankStatementCSVParser = new BankStatementCSVParser();
 
-        System.out.println("The total for all transactions in January is " + total);
+        final String fileName = args[0];
+        final Path path = Paths.get(RESOURCES + fileName);
+        final List<String> lines = Files.readAllLines(path);
+
+        final List<BankTransaction> bankTransactions =
+                bankStatementCSVParser.parseLinesFromCSV(lines)
+
+        System.out.println("The total for all transactions is " + calculateTotalAmount(bankTransactions));
+        System.out.println("Transactions in January " + selectInMonth(BankTransactions, Month.JANUARY));
+
     }
 }
