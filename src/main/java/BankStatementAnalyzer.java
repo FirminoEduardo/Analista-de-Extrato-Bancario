@@ -18,7 +18,7 @@ public class BankStatementAnalyzer {
         final List<BankTransaction> bankTransactions = bankStatementParser.parseLinesFrom(lines);
         final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
 
-        collectSummary(BankStatementProcessor);
+        collectSummary(bankStatementProcessor);
     }
 
     private static void collectSummary(BankStatementProcessor bankStatementProcessor) {
