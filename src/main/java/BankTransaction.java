@@ -67,4 +67,15 @@ public class BankTransaction {
         }
         return bankTransactionsInMonth;
     }
+
+    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
+        final List<BankTransaction> result = new ArrayList<>();
+        for (final BankTransaction bankTransaction: bankTransactions) {
+            if (bankTransaction.getAmount() >= amount) {
+                result.add(bankTransaction);
+            }
+        }
+
+        return result;
+    }
 }
