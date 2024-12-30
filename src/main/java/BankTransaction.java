@@ -68,10 +68,10 @@ public class BankTransaction {
         return bankTransactionsInMonth;
     }
 
-    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
+    public List<BankTransaction> findTransactionsGreaterThanEqual(final Month month) {
         final List<BankTransaction> result = new ArrayList<>();
         for (final BankTransaction bankTransaction: bankTransactions) {
-            if (bankTransaction.getAmount() >= amount) {
+            if (bankTransaction.getDate().getMonth() == month) {
                 result.add(bankTransaction);
             }
         }
