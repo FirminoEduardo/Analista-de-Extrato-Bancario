@@ -75,7 +75,6 @@ public class BankTransaction {
                 result.add(bankTransaction);
             }
         }
-
         return result;
     }
 }
